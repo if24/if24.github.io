@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FFUSER</title>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <div id="content"></div>
+    <script>
+        
+        function decryptAndDisplay() {
+            const encrypted = "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";
+            
+            const hiddenPass = "=gDMxEjNxYmZ".split('').reverse().join('');
+            const password = decodeURIComponent(escape(atob(hiddenPass)));
+            
+            try {
+                const decrypted = CryptoJS.AES.decrypt(encrypted, password).toString(CryptoJS.enc.Utf8);
+                
+                if (decrypted) {
+                    document.open();
+                    document.write(decrypted);
+                    document.close();
+                } else {
+                    document.body.innerHTML = '<div style="text-align: center; margin-top: 100px; font-family: Arial;"><h1 style="color: red;">解密失败</h1><p>文件可能已损坏</p></div>';
+                }
+            } catch(e) {
+                document.body.innerHTML = '<div style="text-align: center; margin-top: 100px; font-family: Arial;"><h1 style="color: red;">卡密错误</h1><p>无法解密内容</p></div>';
+            }
+        }
+        
+        
+        window.onload = decryptAndDisplay;
+    </script>
+</body>
+</html>
