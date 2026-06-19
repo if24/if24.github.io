@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #000;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        @keyframes lightSweep {
+            0% { transform: translateX(-100%) skewX(-20deg); }
+            100% { transform: translateX(200%) skewX(-20deg); }
+        }
+
+        @keyframes rainbowRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .main-card {
+            position: relative;
+            z-index: 2;
+            width: 94%;
+            max-width: 460px;
+            /* 缩减上下内边距，调整为正方形均衡比例 */
+            padding: 40px 36px;
+            background: rgba(10, 10, 18, 0.7);
+            backdrop-filter: blur(15px);
+            border-radius: 26px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            box-shadow: 0 0 50px rgba(255, 80, 180, 0.3);
+            animation: rainbowRotate 8s linear infinite;
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            animation: lightSweep 3.5s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .avatar-box {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 22px;
+            position: relative;
+            filter: none !important;
+        }
+        .rainbow-border {
+            position: absolute;
+            inset: -7px;
+            border-radius: 50%;
+            background: conic-gradient(#ff3366, #ffdd22, #33eeff, #bb44ff, #ff3366);
+        }
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #000;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nickname {
+            font-size: 30px;
+            text-align: center;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff4466, #ffdd00, #22eeff, #b144ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: rainbowRotate 5s linear infinite;
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            text-align: center;
+            font-size: 17px;
+            color: #ff99dd;
+            letter-spacing: 2px;
+            min-height: 24px;
+            margin-bottom: 22px;
+        }
+
+        .split-line {
+            width: 100px;
+            height: 3px;
+            margin: 0 auto 26px;
+            background: linear-gradient(90deg, #ff3366, #33eeff, #bb33ff);
+            border-radius: 3px;
+        }
+
+        .intro-desc {
+            text-align: center;
+            color: #e8e8ff;
+            line-height: 1.6;
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+
+        .skill-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 35px;
+        }
+        .skill-tag {
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 14px;
+            border: 1px solid;
+            animation: rainbowRotate 6s linear infinite;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            transition: 0.3s;
+        }
+        .skill-tag:hover {
+            background: rgba(255, 100, 200, 0.35);
+            transform: scale(1.08);
+        }
+
+        .social-group {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+        .social-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.05);
+            transition: 0.4s;
+            cursor: pointer;
+            animation: none;
+        }
+        .social-btn:hover {
+            transform: translateY(-8px) rotate(360deg);
+            box-shadow: 0 0 25px rgba(255, 80, 190, 0.6);
+        }
+
+        footer {
+            position: relative;
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        @media screen and (max-width: 480px) {
+            .avatar-box {
+                width: 115px;
+                height: 115px;
+            }
+            .nickname {
+                font-size: 25px;
+            }
+            .main-card {
+                padding: 32px 24px;
+            }
+            .social-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-card">
+    <div class="avatar-box">
+        <div class="rainbow-border"></div>
+        <img class="avatar" src="http://120.233.51.145/g?b=qq&ek=AQGQM0Bf15KsJ9Iib86F9SSRQ6ZUVDC3hMU3AlgbNyTWhnc4HR7feVk3NeCvWYib8zuUgaoeOSLEAoA84v0LmPbSQCHp7JP9OOiamHzbvXxZicQF8AUlS2ebIzMDZ8BBrQ&s=0&mType=friendlist" alt="个人头像">
+    </div>
+
+    <h1 class="nickname">QQ-TEST</h1>
+    <div class="job-title">FF制作</div>
+    <div class="split-line"></div>
+
+    <p class="intro-desc">
+        日常爱玩蛋仔派对、我的世界、甜瓜游乐场<br>
+        深耕Roblox，钟爱电梯类趣味地图<br>
+        同时用代码打造惊艳炫酷的可视化界面
+    </p>
+
+    <div class="skill-wrap">
+        <span class="skill-tag">蛋仔派对</span>
+        <span class="skill-tag">我的世界</span>
+        <span class="skill-tag">甜瓜游乐场</span>
+        <span class="skill-tag">Roblox</span>
+        <span class="skill-tag">电梯爱好者</span>
+    </div>
+
+    <div class="social-group">
+        <a class="social-btn" onclick="copyWechat()"><i class="fa-brands fa-weixin"></i></a>
+        <a href="https://qm.qq.com/q/ACAAuEpCVy" class="social-btn"><i class="fa-brands fa-qq"></i></a>
+        <a href="https://github.com/ffuserc" class="social-btn"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:example@qq.com" class="social-btn"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://b23.tv/X3EbDuQ" class="social-btn"><i class="fa-brands fa-bilibili"></i></a>
+    </div>
+
+    <footer>© 2026 炫彩个人主页 | Rainbow UI</footer>
+</div>
+
+<script>
+const wechatId = "deTvT_";
+function copyWechat() {
+    navigator.clipboard.writeText(wechatId).then(() => {
+        alert(`微信号 ${wechatId} 已复制！正在打开微信添加好友`);
+        window.location.href = "weixin://";
+    }).catch(err => {
+        alert(`复制失败，请手动复制微信号：${wechatId}`);
+        window.location.href = "weixin://";
+    })
+}
+</script>
+</body>
+</html>
